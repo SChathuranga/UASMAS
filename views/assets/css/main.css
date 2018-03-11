@@ -2020,7 +2020,24 @@ ul.icons {
     top: 0;
     webkit-linear-gradientidth: 100%;
     width: 100%;
-    z-index: 1; }
+    z-index: 1; 
+  }
+
+  #bannerHome:after {
+    background: linear-gradient(135deg, #ce1b28 0%, #111111 74%);
+    content: ' ';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    webkit-linear-gradientidth: 100%;
+    width: 100%;
+    z-index: 1; 
+    margin-left: 120px;
+  }
+
   #banner.small {
     height: 30vh !important;
     min-height: 30vh; }
