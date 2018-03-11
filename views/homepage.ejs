@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 <style>
   body,
   h1,
@@ -23,7 +24,7 @@
   /* Set the width of the sidebar to 120px */
 
   .w3-sidebar {
-    width: 120px;
+    width: 125px;
     background: #222;
   }
 
@@ -63,23 +64,59 @@
   <div class="row">
     <div class="col-sm-3">
       <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-          <i class="fa fa-home w3-xxlarge"></i>
-          <p>HOME</p>
-        </a>
-        <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-user w3-xxlarge"></i>
-          <p>ABOUT</p>
-        </a>
-        <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-eye w3-xxlarge"></i>
-          <p>PHOTOS</p>
-        </a>
-        <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-          <i class="fa fa-envelope w3-xxlarge"></i>
-          <p>CONTACT</p>
-        </a>
+        <!-- Admin Panel -->
+        <div class="adminNav">
+          <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+            <i class="fas fa-user-secret w3-xxlarge"></i>
+            <navp>ADMIN</navp>
+          </a>
+          <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fas fa-hospital w3-xxlarge"></i>
+            <navp>Manage Centre</navp>
+          </a>
+          <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fas fa-users w3-xxlarge"></i>
+            <navp>Manage Doctor</navp>
+          </a>
+        </div>
+
+        <!-- Doctors Panel -->
+        <div class="doctorNav">
+          <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+            <i class="fas fa-user-md w3-xxlarge"></i>
+            <navp>DOCTOR</navp>
+          </a>
+          <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fas fa-calendar-alt w3-xxlarge"></i>
+            <navp>Available Appointments</navp>
+          </a>
+          <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="far fa-clock w3-xxlarge"></i>
+            <navp>Schedule Channeling</navp>
+          </a>
+        </div>
+
+        <!-- Patient Panel -->
+        <div class="patientNav">
+          <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+            <i class="fas fa-user w3-xxlarge"></i>
+            <navp>CUSTOMER</navp>
+          </a>
+          <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fas fa-calendar-alt w3-xxlarge"></i>
+            <navp>Appointments</navp>
+          </a>
+        </div>
+
+        <!-- Default Panel -->
+        <div class="defaultNav">
+          <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fa fa-envelope w3-xxlarge"></i>
+            <navp>CONTACT</navp>
+          </a>
+        </div>
       </nav>
+
     </div>
     <div class="col-sm-9">
       <section id="bannerHome">

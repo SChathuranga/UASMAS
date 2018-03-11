@@ -128,6 +128,9 @@ em, i {
 p {
   margin: 0 0 2rem 0; }
 
+navp {
+  margin: 0 0 1rem 0; }
+
 header.special {
   text-align: center;
   margin-bottom: 4rem; }
@@ -2035,7 +2038,7 @@ ul.icons {
     webkit-linear-gradientidth: 100%;
     width: 100%;
     z-index: 1; 
-    margin-left: 120px;
+    margin-left: 125px;
   }
 
   #banner.small {
