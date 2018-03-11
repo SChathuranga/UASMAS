@@ -2,7 +2,8 @@
 <html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<link rel="stylesheet" href="assets/css/custom-w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -24,7 +25,7 @@
   /* Set the width of the sidebar to 120px */
 
   .w3-sidebar {
-    width: 125px;
+    width: 110px;
     background: #222;
   }
 
@@ -63,12 +64,12 @@
 
   <div class="row">
     <div class="col-sm-3">
-      <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+      <div class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
         <!-- Admin Panel -->
         <div class="adminNav">
           <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
             <i class="fas fa-user-secret w3-xxlarge"></i>
-            <navp>ADMIN</navp>
+            <navp>&nbspADMIN&nbsp</navp>
           </a>
           <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
             <i class="fas fa-hospital w3-xxlarge"></i>
@@ -115,12 +116,12 @@
             <navp>CONTACT</navp>
           </a>
         </div>
-      </nav>
+      </div>
 
     </div>
     <div class="col-sm-9">
       <section id="bannerHome">
-
+          <% include doctor %>
       </section>
     </div>
   </div>
