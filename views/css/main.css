@@ -153,9 +153,11 @@ iframe {
 [ login ]*/
 
 .limiter {
+  padding-top: 80px;
   width: 100%;
   margin: 0 auto;
 }
+
 
 .container-login100 {
   width: 100%;  
@@ -190,7 +192,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 500px;
+  width: 100%;
   border-radius: 10px;
   overflow: hidden;
   padding: 40px 55px 30px 55px;
@@ -242,6 +244,41 @@ iframe {
 
 /*------------------------------------------------------------------
 [ Input ]*/
+
+@media only screen and (max-width: 414px){
+
+  .limiter {
+    position: relative;
+    width: 100%;
+    min-height: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  
+  .validate-form {
+    padding-top: 10px;
+  }
+
+  .login100-form-logo{
+    width: 25%;
+    height: 15%;
+    }
+
+  .wrap-input100 {
+    width:100%!important; 
+    padding:0;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
+    margin-bottom: 15px;
+  }
+  
+  .wrap-inputPassword {
+    width:100%!important; 
+    padding:0;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
+    margin-bottom: 15px;
+  
+  }
+}
 
 .wrap-input100 {
   width: 100%;
@@ -481,6 +518,12 @@ iframe {
 @media (max-width: 576px) {
   .wrap-login100 {
     padding: 55px 15px 37px 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .wrap-login100 {
+    padding: 5px 5px 5px 5px;
   }
 }
 
