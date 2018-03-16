@@ -1,3 +1,12 @@
+var register =  require('../config/passport');
+
+var mysql = require('mysql');
+var bcrypt = require('bcrypt-nodejs');
+var dbconfig = require('../config/database');
+var connection = mysql.createConnection(dbconfig.connection);
+
+connection.query('USE ' + dbconfig.database);
+
 // app/routes.js
 module.exports = function(app, passport) {
 
@@ -45,11 +54,46 @@ module.exports = function(app, passport) {
 	});
 
 	// process the signup form
-	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect : '/profile', // redirect to the secure profile section
-		failureRedirect : '/signup', // redirect back to the signup page if there is an error
-		failureFlash : true // allow flash messages
-	}));
+	app.post('/signup', function(req, res) {
+
+		var username = req.body.username;
+		var password = req.body.password;
+		var address = req.body.address;
+	
+		var data = {
+			"Data":""
+		};
+	
+		connection.query("SELECT * from users WHERE username = ?", [username],function(err, rows, fields){
+			if(rows.length != 0){
+				data["Data"] = rows;
+				res.json(data);
+			}else{
+				var insertQuery = "INSERT INTO users ( username, password, address ) values (?,?, ?)";
+	
+				connection.query(insertQuery,[username, password, address],function(err, rows, fields){
+				if(rows.length != 0){
+					data["Data"] = rows;
+					
+					res.json(data);
+				}else{
+					data["Data"] = 'No data Found..';
+					res.json(data);
+				}
+		});
+				res.json(data);
+			}
+		});
+
+
+	// res.send(user_id + ' ' + token + ' ' + geo);
+	});
+
+	app.post("/hospital", function(req, res) {
+		var username = req.body.username;
+		var password = req.body.password;
+		var address = req.body.address;
+	});
 
 	// =====================================
 	// PROFILE SECTION =========================
