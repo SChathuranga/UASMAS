@@ -17,6 +17,16 @@ module.exports = function(app, passport) {
 		res.render('index.ejs'); // load the index.ejs file
 	});
 
+	//Institute reg
+	app.get('/institute', function(req, res) {
+		res.render('institute.ejs', { message: req.flash('signupMessage') });
+	});
+
+	//thankyou
+	app.get('/thankyou', function(req, res) {
+		res.render('thankyou.ejs', { message: req.flash('signupMessage') });
+	});
+
 	// =====================================
 	// LOGIN ===============================
 	// =====================================
@@ -101,16 +111,83 @@ module.exports = function(app, passport) {
 				//res.json(data);
 			}
 		});
-
-
 	// res.send(user_id + ' ' + token + ' ' + geo);
 	});
 
-	app.post("/hospital", function(req, res) {
-		var username = req.body.username;
-		var password = req.body.password;
-		var address = req.body.address;
+	//Center registration
+
+	app.get('/center', function(req, res) {
+		// render the page and pass in any flash data if it exists
+		res.render('institute.ejs', { message: req.flash('institutemessage') });
 	});
+	//************* */
+	app.post('/center', function(req, res) {
+
+		var centername = req.body.centername;
+		var address = req.body.address;
+		var tele=req.body.tele;
+
+		var data = {
+			"Data":""
+		};
+	
+		connection.query("SELECT * from channelling_center WHERE centername = ?", [centername],function(err, rows, fields){
+			if(rows.length != 0){
+				data["Data"] = rows;
+				res.json(data);
+			}else{
+				var insertQuery = "INSERT INTO channelling_center (centername,address,telno) values (?,?,?)";
+				
+				connection.query(insertQuery,[centername, address,tele],function(err, rows, fields){
+				if(rows.length != 0){
+					//data["Data"] = rows;
+				
+					//res.json(data);
+				}else{
+					data["Data"] = 'No data Found..';
+					//res.json(data);
+				}
+		}); 
+		//end
+		res.redirect('/thankyou');
+				//res.json(data);
+			}
+		});
+	// res.send(user_id + ' ' + token + ' ' + geo);
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// =====================================
 	// PROFILE SECTION =========================
