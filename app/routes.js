@@ -61,7 +61,7 @@ module.exports = function(app, passport) {
 		var tele=req.body.tele;
 		var email=req.body.email;
 		var regdate=req.body.regdate;
-	
+	var password=req.body.password;
 		var data = {
 			"Data":""
 		};
@@ -72,7 +72,7 @@ module.exports = function(app, passport) {
 				res.json(data);
 			}else{
 				var insertQuery = "INSERT INTO user ( username, address, tele,email,regdate) values (?,?, ?,?,?)";
-				//var insertlogindata = "INSERT INTO login ( username, password) values (?,?)";
+				var insertlogindata = "INSERT INTO login ( username, password) values (?,?)";
 
 
 				connection.query(insertQuery,[username, address, tele,email,regdate],function(err, rows, fields){
@@ -85,6 +85,18 @@ module.exports = function(app, passport) {
 					//res.json(data);
 				}
 		}); 
+		//insert login data
+		connection.query(insertlogindata,[username,password],function(err, rows, fields){
+			if(rows.length != 0){
+				//data["Data"] = rows;
+			
+				//res.json(data);
+			}else{
+				data["Data"] = 'No data Found..';
+				//res.json(data);
+			}
+	});
+		//end
 		res.redirect('/login');
 				//res.json(data);
 			}
