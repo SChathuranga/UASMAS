@@ -10,26 +10,96 @@ var connection = mysql.createConnection(dbconfig.connection);
 connection.query('CREATE DATABASE ' + dbconfig.database);
 
 connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.login_table + '` ( \
+    `idAdmin` INT NOT NULL, \
+    `name` VARCHAR(45) NOT NULL, \
+    `username` VARCHAR(45) NOT NULL, \
+    `password` VARCHAR(45) NOT NULL, \
+    PRIMARY KEY (`idAdmin`) \
+    ) ');
+
+console.log('Success: ' + dbconfig.login_table + ' Created')
+
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.client_table + '` ( \
+    `idclient` INT NOT NULL, \
+    `name` VARCHAR(45) NOT NULL, \
+    `prefix` VARCHAR(45) NOT NULL, \
+    `degree` VARCHAR(45) NULL, \
+    `description` VARCHAR(45) NULL, \
+    `section` VARCHAR(45) NULL, \
+    `login_idAdmin` INT NOT NULL, \
+    PRIMARY KEY (`idclient`, \ `login_idAdmin`) \
+      ) ');
+
+console.log('Success: ' + dbconfig.client_table + ' Created')
+
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.time_slot_table + '` ( \
+    `idtime_slot` INT NOT NULL, \
+    `day` VARCHAR(45) NOT NULL, \
+    `inTime` VARCHAR(45) NOT NULL, \
+    `outTime` VARCHAR(45) NOT NULL, \
+    PRIMARY KEY (`idtime_slot`) \
+    ) ');
+
+console.log('Success: ' + dbconfig.time_slot_table + ' Created')
+
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.ClientOrg_table + '` ( \
+    `idClientOrg` INT NOT NULL, \
+    `orgName` VARCHAR(45) NOT NULL, \
+    `owner` VARCHAR(45) NOT NULL, \
+    PRIMARY KEY (`idClientOrg`) \
+    ) ');
+
+console.log('Success: ' + dbconfig.ClientOrg_table + ' Created')
+
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.channelling_center_table + '` ( \
+    `idchannelling_center` INT NOT NULL, \
+    `centerName` VARCHAR(45) NOT NULL, \
+    `address` VARCHAR(45) NOT NULL, \
+    `telNo` VARCHAR(45) NOT NULL, \
+    `ClientOrg_idClientOrg` INT NOT NULL, \
+    PRIMARY KEY (`idchannelling_center`, `ClientOrg_idClientOrg`) \
+    ) ');
+
+console.log('Success: ' + dbconfig.channelling_center_table + ' Created')
+
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.client_available_time_slot_table + '` ( \
+    `id` INT NOT NULL, \
+    `client_idclient` INT NOT NULL, \
+    `channelling_center_idchannelling_center` INT NOT NULL, \
+    `time_slot_idtime_slot` INT NOT NULL, \
+    PRIMARY KEY (`id`, `client_idclient`, `channelling_center_idchannelling_center`, `time_slot_idtime_slot`) \
+    )');
+
+console.log('Success: ' + dbconfig.client_available_time_slot_table + ' Created')
+
+connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
-    `username` VARCHAR(20) NOT NULL, \
-    `password` CHAR(60) NOT NULL, \
-        PRIMARY KEY (`id`), \
-    UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
-    UNIQUE INDEX `username_UNIQUE` (`username` ASC) \
+    `iduser` INT NOT NULL, \
+    `name` VARCHAR(45) NOT NULL, \
+    `address` VARCHAR(45) NOT NULL, \
+    `tele` VARCHAR(45) NOT NULL, \
+    `email` VARCHAR(45) NOT NULL, \
+    `regDate` VARCHAR(45) NOT NULL, \
+    `login_idAdmin` INT NOT NULL, \
+    PRIMARY KEY (`iduser`, `login_idAdmin`) \
 )');
 
 console.log('Success: ' + dbconfig.users_table + ' Created')
 
 connection.query('\
-CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
-    `username` VARCHAR(20) NOT NULL, \
-    `password` CHAR(60) NOT NULL, \
-        PRIMARY KEY (`id`), \
-    UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
-    UNIQUE INDEX `username_UNIQUE` (`username` ASC) \
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.client_channelling_user_table + '` ( \
+    `channelling_center_time_slot_id` INT NOT NULL, \
+    `user_iduser` INT NOT NULL, \
+    PRIMARY KEY (`channelling_center_time_slot_id`, `user_iduser`) \
 )');
+
+console.log('Success: ' + dbconfig.client_channelling_user_table + ' Created')
 
 console.log('Success: Database Created!')
 
