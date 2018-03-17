@@ -44,8 +44,7 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
 		}),
         function(req, res) {
-            console.log("hello");
-
+           // console.log("hello");
             if (req.body.remember) {
               req.session.cookie.maxAge = 1000 * 60 * 3;
             } else {
@@ -115,7 +114,6 @@ module.exports = function(app, passport) {
 	});
 
 	//Center registration
-
 	app.get('/center', function(req, res) {
 		// render the page and pass in any flash data if it exists
 		res.render('institute.ejs', { message: req.flash('institutemessage') });
