@@ -6,5 +6,5 @@ module.exports = {
         'password': 'abc@123'
     },
 	'database': 'mydb',
-    'users_table': 'users'
+    'users_table': 'user'
 };

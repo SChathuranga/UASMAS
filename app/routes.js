@@ -29,7 +29,7 @@ module.exports = function(app, passport) {
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/homepage', // redirect to the secure profile section
+            successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
 		}),
@@ -57,25 +57,29 @@ module.exports = function(app, passport) {
 	app.post('/signup', function(req, res) {
 
 		var username = req.body.username;
-		var password = req.body.password;
 		var address = req.body.address;
+		var tele=req.body.tele;
+		var email=req.body.email;
+		var regdate=req.body.regdate;
 	
 		var data = {
 			"Data":""
 		};
 	
-		connection.query("SELECT * from users WHERE username = ?", [username],function(err, rows, fields){
+		connection.query("SELECT * from user WHERE username = ?", [username],function(err, rows, fields){
 			if(rows.length != 0){
 				data["Data"] = rows;
 				res.json(data);
 			}else{
-				var insertQuery = "INSERT INTO users ( username, password, address ) values (?,?, ?)";
-	
-				connection.query(insertQuery,[username, password, address],function(err, rows, fields){
+				var insertQuery = "INSERT INTO user ( username, address, tele,email,regdate) values (?,?, ?,?,?)";
+				//var insertlogindata = "INSERT INTO login ( username, password) values (?,?)";
+
+
+				connection.query(insertQuery,[username, address, tele,email,regdate],function(err, rows, fields){
 				if(rows.length != 0){
-					data["Data"] = rows;
-					
-					res.json(data);
+					//data["Data"] = rows;
+				 res.redirect('/login');
+					//res.json(data);
 				}else{
 					data["Data"] = 'No data Found..';
 					res.json(data);
