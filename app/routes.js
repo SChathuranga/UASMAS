@@ -22,6 +22,11 @@ module.exports = function(app, passport) {
 		res.render('institute.ejs', { message: req.flash('signupMessage') });
 	});
 
+	//doctor registration
+	app.get('/regdoctor', function(req, res) {
+		res.render('regdoctor.ejs', { message: req.flash('registerDoctorMessage') });
+	});
+
 	//thankyou
 	app.get('/thankyou', function(req, res) {
 		res.render('thankyou.ejs', { message: req.flash('signupMessage') });
@@ -137,6 +142,44 @@ module.exports = function(app, passport) {
 				var insertQuery = "INSERT INTO channelling_center (centername,address,telno) values (?,?,?)";
 				
 				connection.query(insertQuery,[centername, address,tele],function(err, rows, fields){
+				if(rows.length != 0){
+					//data["Data"] = rows;
+				
+					//res.json(data);
+				}else{
+					data["Data"] = 'No data Found..';
+					//res.json(data);
+				}
+		}); 
+		//end
+		res.redirect('/thankyou');
+				//res.json(data);
+			}
+		});
+	// res.send(user_id + ' ' + token + ' ' + geo);
+	});
+
+	app.post('/regdoctor', function(req, res) {
+
+		var doctorname = req.body.doctorname;
+		var address = req.body.address;
+		var tele=req.body.tele;
+		var email=req.body.email;
+		var speciality=req.body.speciality;
+		var docregid=req.body.docregid;
+
+		var data = {
+			"Data":""
+		};
+	
+		connection.query("SELECT * from doctor WHERE name = ?", [doctorname],function(err, rows, fields){
+			if(rows.length != 0){
+				data["Data"] = rows;
+				res.json(data);
+			}else{
+				var insertQuery = "INSERT INTO doctor (name,address,tele,email,speciality,regid) values (?,?,?,?,?,?)";
+				
+				connection.query(insertQuery,[doctorname, address,tele, email, speciality, docregid],function(err, rows, fields){
 				if(rows.length != 0){
 					//data["Data"] = rows;
 				
