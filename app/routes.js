@@ -78,14 +78,15 @@ module.exports = function(app, passport) {
 				connection.query(insertQuery,[username, address, tele,email,regdate],function(err, rows, fields){
 				if(rows.length != 0){
 					//data["Data"] = rows;
-				 res.redirect('/login');
+				
 					//res.json(data);
 				}else{
 					data["Data"] = 'No data Found..';
-					res.json(data);
+					//res.json(data);
 				}
-		});
-				res.json(data);
+		}); 
+		res.redirect('/login');
+				//res.json(data);
 			}
 		});
 
