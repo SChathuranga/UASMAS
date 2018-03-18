@@ -29,7 +29,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("SELECT * FROM login WHERE id = ? ",[id], function(err, rows){
+        connection.query("SELECT * FROM login WHERE username = ? ",[id], function(err, rows){
             done(err, rows[0]);
         });
     });

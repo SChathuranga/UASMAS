@@ -11,11 +11,8 @@ connection.query('CREATE DATABASE ' + dbconfig.database);
 
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.login_table + '` ( \
-    `idAdmin` INT NOT NULL, \
-    `name` VARCHAR(45) NOT NULL, \
     `username` VARCHAR(45) NOT NULL, \
-    `password` VARCHAR(45) NOT NULL, \
-    PRIMARY KEY (`idAdmin`) \
+    PRIMARY KEY (`username`) \
     ) ');
 
 console.log('Success: ' + dbconfig.login_table + ' Created')
@@ -28,8 +25,8 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.client_table + '` ( \
     `degree` VARCHAR(45) NULL, \
     `description` VARCHAR(45) NULL, \
     `section` VARCHAR(45) NULL, \
-    `login_idAdmin` INT NOT NULL, \
-    PRIMARY KEY (`idclient`, \ `login_idAdmin`) \
+    `client_iduser` INT NOT NULL, \
+    PRIMARY KEY (`idclient`, `client_iduser`) \
       ) ');
 
 console.log('Success: ' + dbconfig.client_table + ' Created')
@@ -80,14 +77,14 @@ console.log('Success: ' + dbconfig.client_available_time_slot_table + ' Created'
 
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
-    `iduser` INT NOT NULL, \
+    `iduser` VARCHAR(45) NOT NULL, \
+    `password` VARCHAR(45) NOT NULL, \
     `name` VARCHAR(45) NOT NULL, \
     `address` VARCHAR(45) NOT NULL, \
     `tele` VARCHAR(45) NOT NULL, \
     `email` VARCHAR(45) NOT NULL, \
     `regDate` VARCHAR(45) NOT NULL, \
-    `login_idAdmin` INT NOT NULL, \
-    PRIMARY KEY (`iduser`, `login_idAdmin`) \
+    PRIMARY KEY (`iduser`) \
 )');
 
 console.log('Success: ' + dbconfig.users_table + ' Created')

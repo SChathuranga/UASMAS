@@ -11,6 +11,11 @@
 
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
 <head>
@@ -47,7 +52,9 @@
         }
       </script>
       <div id="appSideBar" class="w3-sidebar sidenav w3-bar-block w3-small w3-center">
-        <a href="javascript:void(0)" class="closebtn" onclick="collapesNav()"><strong>&times;</strong></a>
+        <a href="javascript:void(0)" class="closebtn" onclick="collapesNav()">
+          <strong>&times;</strong>
+        </a>
         <!-- Admin Panel -->
         <div class="adminNav">
           <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
@@ -66,31 +73,31 @@
 
         <!-- Doctors Panel -->
         <div class="doctorNav">
-            <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-              <i class="fas fa-user-md w3-xxlarge"></i>
-              <navp>DOCTOR</navp>
-            </a>
-            <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-              <i class="fas fa-calendar-alt w3-xxlarge"></i>
-              <navp>Available Appointments</navp>
-            </a>
-            <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-              <i class="far fa-clock w3-xxlarge"></i>
-              <navp>Schedule Channeling</navp>
-            </a>
-          </div>
-  
-          <!-- Patient Panel -->
-          <div class="patientNav">
-            <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-              <i class="fas fa-user w3-xxlarge"></i>
-              <navp>CUSTOMER</navp>
-            </a>
-            <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-              <i class="fas fa-calendar-alt w3-xxlarge"></i>
-              <navp>Appointments</navp>
-            </a>
-          </div>
+          <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+            <i class="fas fa-user-md w3-xxlarge"></i>
+            <navp>DOCTOR</navp>
+          </a>
+          <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fas fa-calendar-alt w3-xxlarge"></i>
+            <navp>Available Appointments</navp>
+          </a>
+          <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="far fa-clock w3-xxlarge"></i>
+            <navp>Schedule Channeling</navp>
+          </a>
+        </div>
+
+        <!-- Patient Panel -->
+        <div class="patientNav">
+          <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+            <i class="fas fa-user w3-xxlarge"></i>
+            <navp>CUSTOMER</navp>
+          </a>
+          <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fas fa-calendar-alt w3-xxlarge"></i>
+            <navp>Appointments</navp>
+          </a>
+        </div>
 
         <!-- Default Panel -->
         <div class="defaultNav">
